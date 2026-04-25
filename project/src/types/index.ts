@@ -38,6 +38,25 @@ export interface Part {
   url?: string;
 }
 
+export interface ScanData {
+  image: File | null;
+  imagePreview: string | null;
+  description: string;
+}
+
+export type FridgeTypeCode = 'RF' | 'RS' | 'RT' | 'RZ' | 'RH' | 'RM';
+
+export interface FridgeType {
+  code: FridgeTypeCode;
+  name: string;
+  description: string;
+}
+
+export interface ApplianceSegment {
+  fridgeType: FridgeType;
+  modelNumber: string;
+}
+
 export interface UserPreferences {
   cost: number;
   time: number;
@@ -46,9 +65,10 @@ export interface UserPreferences {
   deliverySpeedImportance: number;
 }
 
-export type CurrentPage = 
-  | 'landing' 
-  | 'scan' 
+export type CurrentPage =
+  | 'landing'
+  | 'scan'
+  | 'questionary'
   | 'processing' 
   | 'diagnosis' 
   | 'professional-help' 

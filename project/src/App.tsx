@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CurrentPage, UserPreferences } from './types';
+import { CurrentPage, UserPreferences, ScanData, ApplianceSegment } from './types';
 import { Header } from './components/Header';
 import { LandingPage } from './pages/LandingPage';
 import { ScanPage } from './pages/ScanPage';
@@ -12,11 +12,14 @@ import { ProfilePage } from './pages/ProfilePage';
 import { ServiceOptionsPage } from './pages/ServiceOptionsPage';
 import { ConsultationPage } from './pages/ConsultationPage';
 import { BookingPage } from './pages/BookingPage';
+import { QuestionaryPage } from './pages/QuestionaryPage';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<CurrentPage>('landing');
   const [pageHistory, setPageHistory] = useState<CurrentPage[]>(['landing']);
   const [selectedComponentId, setSelectedComponentId] = useState<string>('');
+  const [scanData, setScanData] = useState<ScanData | null>(null);
+  const [applianceSegment, setApplianceSegment] = useState<ApplianceSegment | null>(null);
   
   const [preferences, setPreferences] = useState<UserPreferences>({
     cost: 70,
@@ -48,8 +51,16 @@ function App() {
         return <LandingPage onGetStarted={() => navigateTo('scan')} />;
       
       case 'scan':
-        return <ScanPage onScanProduct={() => navigateTo('processing')} />;
-      
+        return <ScanPage onSubmit={(data) => { setScanData(data); navigateTo('questionary'); }} />;
+
+      case 'questionary':
+        return (
+          <QuestionaryPage
+            scanData={scanData}
+            onComplete={(segment) => { setApplianceSegment(segment); navigateTo('processing'); }}
+          />
+        );
+
       case 'processing':
         return <ProcessingPage />;
       

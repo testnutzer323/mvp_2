@@ -22,8 +22,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
         <div className="space-y-6">
           
           <p className="text-lg text-gray-600 leading-relaxed">
-            Users upload a video of the problem, and the system instantly diagnoses the 
-            issue, providing tailored solutions.
+            Upload a photo and describe your issue — our system instantly diagnoses the
+            problem and provides tailored Samsung self-repair solutions.
           </p>
 
           <button
@@ -45,7 +45,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
           <div>
             <h3 className="text-lg font-semibold mb-1">AI Diagnostics</h3>
             <p className="text-sm text-gray-600">
-              Visual recognition algorithms analyze user-uploaded images or videos to detect the exact problem.
+              Upload a photo and describe the issue — our AI analyzes both to detect the exact problem.
             </p>
           </div>
         </div>

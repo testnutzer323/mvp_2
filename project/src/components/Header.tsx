@@ -18,6 +18,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, onBack, onProfileCl
     
     switch (currentPage) {
       case 'scan': return 'EquipScan';
+      case 'questionary': return 'Identify Appliance';
       case 'processing': return 'Processing';
       case 'diagnosis': return 'Diagnosis Results';
       case 'professional-help': return 'Find Professional Help';
